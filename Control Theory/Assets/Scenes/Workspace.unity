@@ -362,7 +362,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6460944792231933706, guid: d8de88c010ede4a7aa83769a20e133a3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 6460944792231933706, guid: d8de88c010ede4a7aa83769a20e133a3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -417,6 +417,10 @@ PrefabInstance:
       propertyPath: m_Mass
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 2664597587988784036, guid: c98b8459258014b11ab9e1a99b7ab0ef, type: 3}
+      propertyPath: m_GravityScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2887527977130168160, guid: c98b8459258014b11ab9e1a99b7ab0ef, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -457,9 +461,45 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3090716761952899013, guid: c98b8459258014b11ab9e1a99b7ab0ef, type: 3}
+      propertyPath: m_GravityScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5390693338351244862, guid: c98b8459258014b11ab9e1a99b7ab0ef, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.999962
+      objectReference: {fileID: 0}
+    - target: {fileID: 5390693338351244862, guid: c98b8459258014b11ab9e1a99b7ab0ef, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5390693338351244862, guid: c98b8459258014b11ab9e1a99b7ab0ef, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5390693338351244862, guid: c98b8459258014b11ab9e1a99b7ab0ef, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.008726558
+      objectReference: {fileID: 0}
+    - target: {fileID: 5390693338351244862, guid: c98b8459258014b11ab9e1a99b7ab0ef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7905935016669024087, guid: c98b8459258014b11ab9e1a99b7ab0ef, type: 3}
       propertyPath: maxTorque
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7905935016669024087, guid: c98b8459258014b11ab9e1a99b7ab0ef, type: 3}
+      propertyPath: gain.poleAngle
+      value: -20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7905935016669024087, guid: c98b8459258014b11ab9e1a99b7ab0ef, type: 3}
+      propertyPath: gain.poleAngularVelocity
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7905935016669024087, guid: c98b8459258014b11ab9e1a99b7ab0ef, type: 3}
+      propertyPath: gain.wheelAngularVelocity
+      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

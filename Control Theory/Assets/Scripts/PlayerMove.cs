@@ -11,9 +11,21 @@ using WordsOnPlay.Utils;
 
 public class PlayerMove : MonoBehaviour
 {
+#region Structs
+    [System.Serializable]
+    public struct Gain
+    {
+        public float wheelAngularVelocity;
+        public float poleAngle;
+        public float poleAngularVelocity;
+    }
+#endregion 
+
 
 #region Parameters
-    [SerializeField, Unit(Units.NewtonMeter)] private float maxTorque = 1;
+    [SerializeField, Unit(Units.MetersPerSecond)] private float speed = 10;
+    [SerializeField, Unit(Units.NewtonMeter)] private float maxTorque = 10;
+    [SerializeField] private Gain gain;
 #endregion 
 
 #region Connected Objects
@@ -26,6 +38,7 @@ public class PlayerMove : MonoBehaviour
 
 #region State
     private HingeJoint2D wheelJoint;
+    private CircleCollider2D wheelCollider;
     private Actions actions;
     private float moveInput = 0;
 #endregion
@@ -42,6 +55,7 @@ public class PlayerMove : MonoBehaviour
         actions = new Actions();
 
         wheelJoint = wheel.GetComponent<HingeJoint2D>(throwIfNull : true);        
+        wheelCollider = wheel.GetComponent<CircleCollider2D>(throwIfNull : true);
     }
 
     void OnEnable()
@@ -65,8 +79,31 @@ public class PlayerMove : MonoBehaviour
 #region FixedUpdate
     void FixedUpdate()
     {
-        wheel.AddTorque(maxTorque * moveInput);
-        body.AddTorque(-maxTorque * moveInput);
+        float targetWheelAngularVelocity = wheelCollider.radius * speed * -moveInput;
+        Vector2 targetPoleDirection = Vector2.up;
+        float targetPoleAngularVelocity = 0;
+
+        float dWheelAngularVelocity = targetWheelAngularVelocity - wheel.angularVelocity * Mathf.Deg2Rad;
+
+        float dPoleDirection = PerpDot(targetPoleDirection, body.transform.up);
+        float dPoleAngularVelocity = targetPoleAngularVelocity - body.angularVelocity * Mathf.Deg2Rad;
+        Debug.Log($"dPoleAngularVelocity = {targetPoleAngularVelocity} - {body.angularVelocity * Mathf.Deg2Rad} = {dPoleAngularVelocity}");
+
+        float torque = gain.wheelAngularVelocity * dWheelAngularVelocity +
+            gain.poleAngle * dPoleDirection +
+            gain.poleAngularVelocity * dPoleAngularVelocity;
+
+        wheel.AddTorque(torque);
+        body.AddTorque(-torque);
+    }
+#endregion
+
+#region Private methods
+
+    private float PerpDot(Vector2 a, Vector2 b)
+    {
+        return a.y * b.x - a.x * b.y;   // perp(a) . b = |a||b| sin \theta
+
     }
 #endregion
 
