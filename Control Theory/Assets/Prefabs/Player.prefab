@@ -46,8 +46,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 832e8c9b585c34d4394bf93d66702657, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMove
-  angularVelocity: 180
-  wheel: {fileID: 621373624148061477}
+  maxTorque: 180
+  wheel: {fileID: 3090716761952899013}
+  body: {fileID: 2664597587988784036}
 --- !u!1 &2392768378229553888
 GameObject:
   m_ObjectHideFlags: 0
@@ -60,7 +61,7 @@ GameObject:
   - component: {fileID: 6760740056877819875}
   - component: {fileID: 4393169888747096881}
   - component: {fileID: 3090716761952899013}
-  - component: {fileID: 621373624148061477}
+  - component: {fileID: 519405964392523702}
   m_Layer: 7
   m_Name: Wheel
   m_TagString: Untagged
@@ -133,7 +134,7 @@ SpriteRenderer:
   m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: -2785366349977813741, guid: ab1ef6349d5334c358328fedfa8cb0d2, type: 3}
-  m_Color: {r: 1, g: 0.10849059, b: 0.94406813, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -152,7 +153,7 @@ CircleCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 98a8d78609a3e4a25818151f023cdd32, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -194,7 +195,7 @@ Rigidbody2D:
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 98a8d78609a3e4a25818151f023cdd32, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -205,8 +206,8 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!235 &621373624148061477
-WheelJoint2D:
+--- !u!233 &519405964392523702
+HingeJoint2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -222,14 +223,15 @@ WheelJoint2D:
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: -0.5}
-  m_Suspension:
-    m_DampingRatio: 1
-    m_Frequency: 1000000
-    m_Angle: 90
-  m_UseMotor: 1
+  m_UseConnectedAnchor: 1
+  m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
     m_MaximumMotorForce: 10000
+  m_UseLimits: 0
+  m_AngleLimits:
+    m_LowerAngle: 0
+    m_UpperAngle: 359
 --- !u!1 &6142241810621415271
 GameObject:
   m_ObjectHideFlags: 0
@@ -243,7 +245,7 @@ GameObject:
   - component: {fileID: 2664597587988784036}
   - component: {fileID: 2896856194674857585}
   m_Layer: 8
-  m_Name: Capsule
+  m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -339,7 +341,7 @@ Rigidbody2D:
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: f36837688865f41ccb02f35e33546c32, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -360,7 +362,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: f36837688865f41ccb02f35e33546c32, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0

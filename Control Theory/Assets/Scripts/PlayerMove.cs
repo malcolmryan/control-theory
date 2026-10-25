@@ -7,22 +7,25 @@
 
 using UnityEngine;
 using Sirenix.OdinInspector;
+using WordsOnPlay.Utils;
 
 public class PlayerMove : MonoBehaviour
 {
 
 #region Parameters
-    [SerializeField, Unit(Units.DegreesPerSecond)] private float angularVelocity = Mathf.PI / 3;
+    [SerializeField, Unit(Units.NewtonMeter)] private float maxTorque = 1;
 #endregion 
 
 #region Connected Objects
-    [SerializeField, Required, ChildGameObjectsOnly] private WheelJoint2D wheel;
+    [SerializeField, Required, ChildGameObjectsOnly] private Rigidbody2D wheel;
+    [SerializeField, Required, ChildGameObjectsOnly] private Rigidbody2D body;
 #endregion
 
 #region Components
 #endregion
 
 #region State
+    private HingeJoint2D wheelJoint;
     private Actions actions;
     private float moveInput = 0;
 #endregion
@@ -37,6 +40,8 @@ public class PlayerMove : MonoBehaviour
     void Awake()
     {
         actions = new Actions();
+
+        wheelJoint = wheel.GetComponent<HingeJoint2D>(throwIfNull : true);        
     }
 
     void OnEnable()
@@ -60,9 +65,8 @@ public class PlayerMove : MonoBehaviour
 #region FixedUpdate
     void FixedUpdate()
     {
-        JointMotor2D motor = wheel.motor;
-        motor.motorSpeed = moveInput * angularVelocity;
-        wheel.motor = motor;
+        wheel.AddTorque(maxTorque * moveInput);
+        body.AddTorque(-maxTorque * moveInput);
     }
 #endregion
 

@@ -414,9 +414,9 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 2664597587988784036, guid: c98b8459258014b11ab9e1a99b7ab0ef, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 6200000, guid: f36837688865f41ccb02f35e33546c32, type: 2}
+      propertyPath: m_Mass
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 2887527977130168160, guid: c98b8459258014b11ab9e1a99b7ab0ef, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -457,25 +457,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2896856194674857585, guid: c98b8459258014b11ab9e1a99b7ab0ef, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 6200000, guid: f36837688865f41ccb02f35e33546c32, type: 2}
-    - target: {fileID: 3090716761952899013, guid: c98b8459258014b11ab9e1a99b7ab0ef, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 6200000, guid: 98a8d78609a3e4a25818151f023cdd32, type: 2}
-    - target: {fileID: 4393169888747096881, guid: c98b8459258014b11ab9e1a99b7ab0ef, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 6200000, guid: 98a8d78609a3e4a25818151f023cdd32, type: 2}
-    - target: {fileID: 6760740056877819875, guid: c98b8459258014b11ab9e1a99b7ab0ef, type: 3}
-      propertyPath: m_Color.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6760740056877819875, guid: c98b8459258014b11ab9e1a99b7ab0ef, type: 3}
-      propertyPath: m_Color.g
-      value: 0
+    - target: {fileID: 7905935016669024087, guid: c98b8459258014b11ab9e1a99b7ab0ef, type: 3}
+      propertyPath: maxTorque
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
